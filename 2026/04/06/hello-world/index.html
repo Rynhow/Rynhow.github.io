@@ -149,7 +149,27 @@
   isHighlightShrink: false,
   isToc: true,
   pageType: 'post'
-}</script><meta name="generator" content="Hexo 8.1.1"></head><body><script>window.paceOptions = {
+}</script><style>
+  /* 极简分类卡片美化：只加了边框、圆角和轻微悬停 */
+  .category-lists { gap: 16px; padding: 20px 0; }
+  .category-list-item { 
+    border: 1px solid #f0f0f0; 
+    border-radius: 8px; 
+    padding: 20px; 
+    transition: all 0.2s; 
+  }
+  .category-list-item:hover { 
+    border-color: #d0d7de; 
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05); 
+  }
+  .category-list-item .category-name { color: #2c3e50; }
+  .category-list-item .category-count { color: #909399; }
+  /* 暗黑模式适配 */
+  [data-theme="dark"] .category-list-item { background: #1e1e20; border-color: #2d2d30; }
+  [data-theme="dark"] .category-list-item:hover { background: #27272a; }
+  [data-theme="dark"] .category-list-item .category-name { color: #f3f4f6; }
+</style>
+<meta name="generator" content="Hexo 8.1.1"></head><body><script>window.paceOptions = {
   restartOnPushState: false
 }
 
