@@ -1,0 +1,879 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Kali零基础学习路线 | 探索数字世界</title><meta name="author" content="Rynhow"><meta name="copyright" content="Rynhow"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="30 天完整学习计划Kali 实操 + 网络 &amp;#x2F; Web&amp;#x2F;Linux 底层知识同步学每天内容拆细：命令 + 用途、配套知识点、必须理解的内容，不看视频、纯动手 + 理解，学完真正入门，不是只会抄命令。第 1 周：Linux 基础 + 网络底层常识（第 1～7 天）第 1 天..."><link rel="shortcut icon" href="/img/favicon.ico?v=1"><link rel="canonical" href="http://example.com/2026/04/06/Kali%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.9/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!undefined && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'undefined')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'undefined')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          const mediaQueryDark = window.matchMedia('(prefers-color-scheme: dark)')
+          const mediaQueryLight = window.matchMedia('(prefers-color-scheme: light)')
+
+          if (theme === undefined) {
+            if (mediaQueryLight.matches) activateLightMode()
+            else if (mediaQueryDark.matches) activateDarkMode()
+            else {
+              const hour = new Date().getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            mediaQueryDark.addEventListener('change', () => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else {
+            theme === 'light' ? activateLightMode() : activateDarkMode()
+          }
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.json","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":150,"languages":{"author":"作者: Rynhow","link":"链接: ","source":"来源: 探索数字世界","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Kali零基础学习路线',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'post'
+}</script><style>
+  /* 极简分类卡片美化：只加了边框、圆角和轻微悬停 */
+  .category-lists { gap: 16px; padding: 20px 0; }
+  .category-list-item { 
+    border: 1px solid #f0f0f0; 
+    border-radius: 8px; 
+    padding: 20px; 
+    transition: all 0.2s; 
+  }
+  .category-list-item:hover { 
+    border-color: #d0d7de; 
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05); 
+  }
+  .category-list-item .category-name { color: #2c3e50; }
+  .category-list-item .category-count { color: #909399; }
+  /* 暗黑模式适配 */
+  [data-theme="dark"] .category-list-item { background: #1e1e20; border-color: #2d2d30; }
+  [data-theme="dark"] .category-list-item:hover { background: #27272a; }
+  [data-theme="dark"] .category-list-item .category-name { color: #f3f4f6; }
+</style>
+<meta name="generator" content="Hexo 8.1.1"></head><body><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+btf.addGlobalFn('pjaxSend', () => {
+  Pace.restart()
+}, 'pace_restart')
+
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/blue/pace-theme-minimal.min.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/null" onerror="this.onerror=null;this.src='/null'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">探索数字世界</span></a><a class="nav-page-title" href="/"><span class="site-name">Kali零基础学习路线</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Kali零基础学习路线</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-04-06T13:30:18.000Z" title="发表于 2026-04-06 21:30:18">2026-04-06</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-04-06T13:37:51.353Z" title="更新于 2026-04-06 21:37:51">2026-04-06</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Kali/">Kali</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">3.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>10分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><div id="post-outdate-notice" data="{&quot;limitDay&quot;:365,&quot;messagePrev&quot;:&quot;It has been&quot;,&quot;messageNext&quot;:&quot;days since the last update, the content of the article may be outdated.&quot;,&quot;postUpdate&quot;:&quot;2026-04-06 21:37:51&quot;}" hidden></div><p>30 天完整学习计划<br>Kali 实操 + 网络 &#x2F; Web&#x2F;Linux 底层知识同步学每天内容拆细：命令 + 用途、配套知识点、必须理解的内容，不看视频、纯动手 + 理解，学完真正入门，不是只会抄命令。<br>第 1 周：Linux 基础 + 网络底层常识（第 1～7 天）<br>第 1 天</p>
+<pre><code>Kali 实操
+    whoami
+    用途：查看当前登录用户，你是 root（最高管理员）
+    pwd
+    用途：查看你现在在哪个文件夹路径
+    ls
+    用途：列出当前目录里的文件 / 文件夹
+    ls -la
+    用途：查看所有文件（包括隐藏文件）
+配套必学（详细）
+    IP 地址是什么
+    每台设备的 “门牌号”，比如 192.168.1.10，用来在网络里找到设备
+    局域网
+    家里同一个 WiFi、虚拟机网段都叫局域网，设备之间可以互相访问
+今日目标
+看懂自己身份、位置，知道 IP 是设备地址
+</code></pre>
+<p>第 2 天</p>
+<pre><code>Kali 实操
+    mkdir test_dir
+    用途：新建文件夹 test_dir
+    touch test.txt
+    用途：新建空文本文件
+    nano test.txt
+    用途：编辑文件，输入内容，Ctrl+O 保存、Ctrl+X 退出
+    cat test.txt
+    用途：查看文件内容
+配套必学（详细）
+    常见端口作用（必须记）
+        80 / 443：网站服务
+        22：SSH 远程登录
+        3389：Windows 远程桌面
+        445：Windows 文件共享
+        端口就是设备的 “服务入口”
+今日目标
+会创建、编辑、查看文件，知道端口是干嘛的
+</code></pre>
+<p>第 3 天</p>
+<pre><code>Kali 实操
+    rm test.txt
+    用途：删除文件
+    rm -rf test_dir
+    用途：强制删除文件夹，不弹窗提醒
+    cd /
+    用途：进入系统根目录
+    cd ~
+    用途：回到 root 家目录
+配套必学（详细）
+    ping 原理
+    发一个数据包给目标，看有没有回复，用来判断设备是否开机、网络通不通
+    arp 作用
+    通过 IP 找设备物理地址，内网扫描靠它
+今日目标
+熟练删文件、切目录，理解 ping/arp 是探测设备的
+</code></pre>
+<p>第 4 天</p>
+<pre><code>Kali 实操
+    ip a
+    用途：查看 Kali 本机 IP（inet 后面的地址）
+    ping baidu.com -c 3
+    用途：测试能否上网，只发 3 个包就停
+    netstat -tuln
+    用途：查看本机开了哪些端口、哪些服务在运行
+配套必学（详细）
+    HTTP 是什么
+    浏览器和网站服务器交流的语言，你打开网页就是发 HTTP 请求
+    请求与响应
+    浏览器→服务器：请求网页
+    服务器→浏览器：返回页面内容
+今日目标
+会查 IP、测网络，明白上网就是收发 HTTP 数据
+</code></pre>
+<p>第 5 天</p>
+<pre><code>Kali 实操
+    apt update
+    用途：刷新阿里云软件源列表
+    apt install tree -y
+    用途：安装目录树工具
+    tree
+    用途：直观显示文件夹层级结构
+配套必学（详细）
+    Linux 权限基础
+        r：读
+        w：写
+        x：执行
+        root：拥有所有权限，普通用户受限
+今日目标
+会用 apt 装软件，理解 Linux 分普通权限和最高权限
+</code></pre>
+<p>第 6 天</p>
+<pre><code>Kali 实操
+    apt autoremove -y
+    用途：卸载系统没用的依赖包
+    apt autoclean
+    用途：清理安装包缓存，释放空间
+    systemctl status apache2
+    用途：查看 Apache 网站服务是否运行
+配套必学（详细）
+    常见服务器服务
+        Apache/Nginx：网页服务器
+        MySQL/MariaDB：数据库，存账号密码
+        SSH：远程命令控制
+今日目标
+会清理系统，知道网站、数据库、远程登录分别是什么服务
+</code></pre>
+<p>第 7 天</p>
+<pre><code>Kali 实操
+    VMware 操作：拍摄快照，命名「第 7 天基础状态」
+    模拟删错文件，用快照恢复
+配套必学（详细）
+    安全红线（必须背）
+        只在本地虚拟机 / 靶场练习
+        绝不扫描 / 攻击外网任何设备
+        不传播工具、不入侵他人设备
+今日目标
+养成快照习惯，牢记法律底线
+</code></pre>
+<p>第 2 周：信息收集 + 服务识别（第 8～12 天）<br>第 8 天</p>
+<pre><code>Kali 实操
+    netdiscover -r 192.168.x.0/24
+    用途：扫描局域网所有开机设备，列出 IP + MAC
+配套必学（详细）
+    网段表示法
+    192.168.1.0/24 表示从 192.168.1.1 到 192.168.1.255
+    存活主机
+    能 ping 通、能扫描到的设备就是在线设备
+目标：会找靶机 IP
+</code></pre>
+<p>第 9 天</p>
+<pre><code>Kali 实操
+    nmap 靶机IP
+    用途：扫描常见端口，看开了哪些服务
+    nmap -p- 靶机IP
+    用途：扫描全部 65535 个端口
+配套必学（详细）
+    端口与风险
+    开放端口越多，暴露的入口越多，越容易被入侵
+    封闭端口 vs 开放端口
+    开放：可以访问
+    关闭：无法连接
+目标：会基础端口扫描
+</code></pre>
+<p>第 10 天</p>
+<pre><code>Kali 实操
+    nmap -A -p- 靶机IP
+    用途：扫全端口 + 系统版本 + 服务版本 + 路由信息
+配套必学（详细）
+    服务版本识别
+    比如 Apache 2.4.41，版本越旧，漏洞越多
+    操作系统识别
+    nmap 能判断是 Windows 还是 Linux
+目标：看懂 nmap 报告
+</code></pre>
+<p>第 11 天</p>
+<pre><code>Kali 实操
+    apt install dirsearch -y
+    用途：安装网站目录爆破工具
+配套必学（详细）
+    网站后台路径
+    常见：/admin、/login、/upload、/phpmyadmin
+目标：装好目录扫描工具
+</code></pre>
+<p>第 12 天</p>
+<pre><code>Kali 实操
+    dirsearch -u http://靶机IP
+    用途：爆破网站隐藏路径、后台、上传点
+配套必学（详细）
+    robots.txt
+    网站告诉爬虫哪些不能看，反而会泄露敏感路径
+目标：会扫网站隐藏目录
+</code></pre>
+<p>第 3 周：DVWA 漏洞 + Web 原理（第 13～20 天）<br>第 13 天</p>
+<pre><code>Kali 实操
+    apt install apache2 mariadb-server php php-mysqli -y
+    用途：安装网页服务 + 数据库 + PHP 脚本环境
+    systemctl start apache2 mariadb
+    用途：启动服务
+配套必学（详细）
+    网站运行流程
+    浏览器 → Apache（网页服务） → PHP（脚本） → MySQL（存数据）
+目标：搭好 Web 运行环境
+</code></pre>
+<p>第 14 天</p>
+<pre><code>Kali 实操
+    cd /var/www/html
+    用途：进入网站根目录
+    git clone https://github.com/digininja/DVWA.git
+    用途：下载漏洞靶场
+    chmod -R 777 DVWA
+    用途：给最高权限，防止打不开
+配套必学（详细）
+    DVWA 难度
+    Low：无防护，适合入门
+    Medium：简单过滤
+    High：较强防护
+目标：搭好 DVWA 靶场
+</code></pre>
+<p>第 15 天</p>
+<pre><code>Kali 实操
+    DVWA SQL 注入输入：&#39; or 1=1#
+    用途：绕过账号密码登录
+配套必学（详细）
+    SQL 是什么
+    数据库查询语言，用来查账号、密码
+    注入原理
+    用 &#39; 打断正常语句，or 1=1 永远成立，# 注释后面内容
+目标：理解 SQL 注入基本逻辑
+</code></pre>
+<p>第 16 天</p>
+<pre><code>Kali 实操
+    重复练习 SQL 注入，尝试查看数据表
+配套必学（详细）
+    用户密码存在哪
+    存在数据库里，SQL 注入就是偷查这些数据
+目标：熟练手工注入
+</code></pre>
+<p>第 17 天</p>
+<pre><code>Kali 实操
+    XSS 输入：&lt;script&gt;alert(1)&lt;/script&gt;
+    用途：弹出窗口，证明漏洞存在
+配套必学（详细）
+    JS 作用
+    在浏览器上运行的脚本，XSS 就是插入恶意 JS
+目标：会测试 XSS 漏洞
+</code></pre>
+<p>第 18 天</p>
+<pre><code>Kali 实操
+    命令执行输入：127.0.0.1; id
+    用途：执行系统命令，查看当前用户
+    ; cat /etc/passwd
+    用途：查看系统所有用户
+配套必学（详细）
+    命令分隔符
+    ; | &amp;&amp; 可以让服务器连续执行多条命令
+目标：理解命令执行就是让服务器听你指挥
+</code></pre>
+<p>第 19 天</p>
+<pre><code>Kali 实操
+    文件上传模块上传图片，查看上传路径
+配套必学（详细）
+    上传漏洞危害
+    上传木马文件，就能控制整个网站
+目标：理解上传漏洞原理
+</code></pre>
+<p>第 20 天</p>
+<pre><code>Kali 实操
+    把 SQL、XSS、命令执行各练一遍
+配套必学（详细）
+    漏洞本质
+    所有简单漏洞都是：服务器没过滤用户输入
+目标：固化漏洞操作流程
+</code></pre>
+<p>第 4 周：Burp + 靶机渗透 + 提权原理（第 21～27 天）<br>第 21 天</p>
+<pre><code>Kali 实操
+    浏览器设置代理：127.0.0.1:8080
+    打开 Burp Suite，开启拦截
+配套必学（详细）
+    代理原理
+    Burp 位于浏览器和服务器中间，截获所有请求
+目标：会抓包
+</code></pre>
+<p>第 22 天</p>
+<pre><code>Kali 实操
+    抓取 DVWA 登录包，修改账号密码，重放
+配套必学（详细）
+    GET vs POST
+    GET：参数在网址里
+    POST：参数在请求体里，更隐蔽
+目标：会改包、重放
+</code></pre>
+<p>第 23 天</p>
+<pre><code>Kali 实操
+    netdiscover 找靶机
+    nmap -A -p- 靶机IP 全扫描
+配套必学（详细）
+    渗透 70% 是信息收集
+    信息越全，越容易找到漏洞
+目标：完成前期信息收集
+</code></pre>
+<p>第 24 天</p>
+<pre><code>Kali 实操
+    dirsearch -u http://靶机IP 扫后台
+配套必学（详细）
+    webshell 是什么
+    一个网页后门，通过它控制网站
+目标：找到漏洞入口
+</code></pre>
+<p>第 25 天</p>
+<pre><code>Kali 实操
+    利用漏洞拿到 webshell
+    whoami 查看权限
+配套必学（详细）
+    普通用户 vs root
+    普通用户：只能看自己文件
+    root：控制整个服务器
+目标：拿到网站权限
+</code></pre>
+<p>第 26 天</p>
+<pre><code>Kali 实操
+    find / -perm -u+s -type f 2&gt;/dev/null
+    用途：找可提权的 SUID 程序
+配套必学（详细）
+    SUID 提权原理
+    程序自带 root 权限，普通用户运行它就能提权
+目标：学会 SUID 提权
+</code></pre>
+<p>第 27 天</p>
+<pre><code>Kali 实操
+    sudo -l
+    用途：查看能无密码执行的 root 命令
+    提权后 cat /root/flag.txt
+配套必学（详细）
+    sudo 配置错误
+    管理员配错权限，导致普通用户能直接提权
+目标：完整拿下一台靶机
+</code></pre>
+<p>收尾：MSF + 总复盘（第 28～30 天）<br>第 28 天</p>
+<pre><code>Kali 实操
+    msfconsole
+    用途：启动 Metasploit 渗透框架
+    search mysql
+    用途：搜数据库相关漏洞模块
+配套必学（详细）
+    MSF 是什么
+    集成大量漏洞的利用工具，不是外挂
+目标：熟悉 MSF 界面
+</code></pre>
+<p>第 29 天</p>
+<pre><code>Kali 实操
+    use exploit/multi/handler
+    set lhost 你的KaliIP
+    run
+    用途：监听反弹 shell
+配套必学（详细）
+    反弹 shell
+    服务器主动连接你，绕过防火墙拦截
+目标：会监听反弹权限
+</code></pre>
+<p>第 30 天</p>
+<pre><code>Kali 实操
+    不看教程，独立完成：扫 IP → 扫端口 → 扫目录 → 拿 shell → 提权 → 拿 flag
+配套必学（详细）
+    整理全套笔记：命令、payload、流程
+    明确后续方向：练更多靶机、学 Python、学绕过防护
+目标：达到真正网络安全入门水平
+</code></pre>
+<p>总结<br>这 30 天你不只练 Kali，同时把网络、Web、Linux、权限、漏洞原理全部学完，你不再是 “只会点工具的人”，而是懂原理、有流程、能独立打靶的入门安全人员。<br>难吗<br>一点都不难，完全是为零基础量身定的，全程没有晦涩理论、不用数学、不用背长篇大论，只要你会复制粘贴、愿意跟着敲命令，30 天稳能学会。<br>我给你拆得特别直白，告诉你哪简单、哪稍微要花点心思、哪完全不用怕：<br>整体难度：⭐⭐（满分 5 星，纯新手友好）</p>
+<ol>
+<li><p>前 10 天：难度＝0，跟玩一样<br>全是敲命令、点鼠标、记常识：</p>
+<p> Linux 基础命令：就那十几个，重复敲 3 遍自然记住<br> 网络常识：都是大白话，IP &#x3D; 门牌号、端口 &#x3D; 门，一听就懂<br> 扫 IP、扫端口：一条命令复制运行，出结果就行，不用懂原理</p>
+</li>
+</ol>
+<p>这部分你甚至不用动脑子，照做就会。<br>2. 中间 10 天（DVWA 漏洞）：难度＝⭐</p>
+<pre><code>SQL 注入、XSS、命令执行：** payload 是固定的 **
+你只需要输入：
+&#39; or 1=1#
+&lt;script&gt;alert(1)&lt;/script&gt;
+; id
+不用懂代码，不用懂数据库，会输入、能看到效果就算会
+Burp Suite 抓包：就设个代理，点几下拦截，纯界面操作
+</code></pre>
+<p>这部分是 “傻瓜式操作”，练两次就熟练。<br>3. 最后 10 天（靶机渗透 + 提权）：难度＝⭐⭐<br>   唯一稍微需要一点点逻辑的地方，但也超级简单：</p>
+<pre><code>流程是固定死的：
+扫 IP → 扫端口 → 扫目录 → 找漏洞 → 拿权限 → 提权
+入门靶机的漏洞都特别明显，不会藏着掖着
+提权就两条命令，照着跑就行
+</code></pre>
+<p>不需要你 “发明方法”，只需要你 “走完流程”。<br>你唯一可能觉得 “有点陌生” 的 3 件事（但根本不算难）</p>
+<pre><code>命令记不住不用背！不用背！不用背！前期直接复制，练多了手自己就会敲，根本不用脑子记。
+有些名词听不懂前期不用懂！你只需要知道：
+    扫 IP＝找目标
+    拿 shell＝控制机器
+    提权＝变成管理员
+    先会做，原理慢慢自然就懂。
+偶尔靶机卡住入门靶机容错率极高，实在不行换一台，或者恢复快照重来，零压力。
+</code></pre>
+<p>最真实的一句话总结<br>这套 30 天计划，是网络安全里最简单、最落地、最不需要天赋的入门路线。<br>只要你每天愿意花 1.5 小时跟着做，不存在学不会的可能。<br>不比打游戏难，不比学办公软件难，甚至比学编程简单 10 倍。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://Rynhow.github.io">Rynhow</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2026/04/06/Kali%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/">http://example.com/2026/04/06/Kali%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://example.com" target="_blank">探索数字世界</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/null" data-sites="wechat,github,copy_link"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2026/04/06/hello-world/" title="Hello World"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">Hello World</div></div><div class="info-2"><div class="info-item-1">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new &quot;My New Post&quot;  More info: Writing Run server1$ hexo server  More info: Server Generate static files1$ hexo generate  More info: Generating Deploy to rem...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/null" onerror="this.onerror=null;this.src='/null'" alt="avatar"/></div><div class="author-info-name">Rynhow</div><div class="author-info-description">网络安全爱好者 | 技术笔记</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Rynhow"><i class="fab fa-github"></i><span>Follow</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/Rynhow" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div class="sticky_layout"></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2026 By Rynhow</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.9/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@19.1.3/dist/lazyload.iife.min.js"></script><div class="js-pjax"><script>(() => {
+  const parseViewBox = viewBox => {
+    if (!viewBox) return null
+    const parts = viewBox.trim().split(/[\s,]+/).map(n => Number(n))
+    if (parts.length !== 4 || parts.some(n => Number.isNaN(n))) return null
+    return parts
+  }
+
+  const getSvgViewBox = svg => {
+    const attr = parseViewBox(svg.getAttribute('viewBox'))
+    if (attr) return attr
+
+    // Fallback: use bbox to build a viewBox
+    try {
+      const bbox = svg.getBBox()
+      if (bbox && bbox.width && bbox.height) return [bbox.x, bbox.y, bbox.width, bbox.height]
+    } catch (e) {
+      // getBBox may fail on some edge cases; ignore
+    }
+
+    const w = Number(svg.getAttribute('width')) || 0
+    const h = Number(svg.getAttribute('height')) || 0
+    if (w > 0 && h > 0) return [0, 0, w, h]
+    return [0, 0, 100, 100]
+  }
+
+  const setSvgViewBox = (svg, vb) => {
+    svg.setAttribute('viewBox', `${vb[0]} ${vb[1]} ${vb[2]} ${vb[3]}`)
+  }
+
+  const clamp = (v, min, max) => Math.max(min, Math.min(max, v))
+
+  const openSvgInNewTab = ({ source, initViewBox }) => {
+    const getClonedSvg = () => {
+      if (typeof source === 'string') {
+        const template = document.createElement('template')
+        template.innerHTML = source.trim()
+        const svg = template.content.querySelector('svg')
+        return svg ? svg.cloneNode(true) : null
+      }
+      if (source && typeof source.cloneNode === 'function') {
+        return source.cloneNode(true)
+      }
+      return null
+    }
+
+    const clone = getClonedSvg()
+    if (!clone) return
+    if (initViewBox && initViewBox.length === 4) {
+      clone.setAttribute('viewBox', initViewBox.join(' '))
+    }
+    if (!clone.getAttribute('xmlns')) clone.setAttribute('xmlns', 'http://www.w3.org/2000/svg')
+    if (!clone.getAttribute('xmlns:xlink') && clone.outerHTML.includes('xlink:')) {
+      clone.setAttribute('xmlns:xlink', 'http://www.w3.org/1999/xlink')
+    }
+    // inject background to match current theme
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark'
+    const bg = getComputedStyle(document.body).backgroundColor || (isDark ? '#1e1e1e' : '#ffffff')
+    if (!clone.style.background) clone.style.background = bg
+
+    const serializer = new XMLSerializer()
+    const svgSource = serializer.serializeToString(clone)
+    const htmlSource = `<!doctype html><html><head><meta charset="utf-8" />
+      <style>
+        html, body { width: 100%; height: 100%; margin: 0; display: flex; align-items: center; justify-content: center; background: ${bg}; }
+        svg { max-width: 100%; max-height: 100%; height: auto; width: auto; }
+      </style>
+      </head><body>${svgSource}</body></html>`
+    const blob = new Blob([htmlSource], { type: 'text/html;charset=utf-8' })
+    const url = URL.createObjectURL(blob)
+    window.open(url, '_blank', 'noopener')
+    setTimeout(() => URL.revokeObjectURL(url), 30000)
+  }
+
+  const attachMermaidViewerButton = wrap => {
+    let btn = wrap.querySelector('.mermaid-open-btn')
+    if (!btn) {
+      btn = document.createElement('button')
+      btn.type = 'button'
+      btn.className = 'mermaid-open-btn'
+      wrap.appendChild(btn)
+    }
+
+    btn.innerHTML = '<i class="fa fa-search fa-fw" aria-hidden="true"></i>'
+
+    if (!btn.__mermaidViewerBound) {
+      btn.addEventListener('click', e => {
+        e.preventDefault()
+        e.stopPropagation()
+        const svg = wrap.__mermaidOriginalSvg || wrap.querySelector('svg')
+        if (!svg) return
+        const initViewBox = wrap.__mermaidInitViewBox
+        if (typeof svg === 'string') {
+          openSvgInNewTab({ source: svg, initViewBox })
+          return
+        }
+        openSvgInNewTab({ source: svg, initViewBox })
+      })
+      btn.__mermaidViewerBound = true
+    }
+  }
+
+  // Zoom around a point (px, py) in the SVG viewport (in viewBox coordinates)
+  const zoomAtPoint = (vb, factor, px, py) => {
+    const w = vb[2] * factor
+    const h = vb[3] * factor
+    const nx = px - (px - vb[0]) * factor
+    const ny = py - (py - vb[1]) * factor
+    return [nx, ny, w, h]
+  }
+
+  const initMermaidGestures = wrap => {
+    const svg = wrap.querySelector('svg')
+    if (!svg) return
+
+    // Ensure viewBox exists so gestures always work
+    const initVb = getSvgViewBox(svg)
+    wrap.__mermaidInitViewBox = initVb
+    wrap.__mermaidCurViewBox = initVb.slice()
+    setSvgViewBox(svg, initVb)
+
+    // Avoid binding multiple times on themeChange/pjax
+    if (wrap.__mermaidGestureBound) return
+    wrap.__mermaidGestureBound = true
+
+    // Helper: map client (viewport) coordinate -> viewBox coordinate
+    const clientToViewBox = (clientX, clientY) => {
+      const rect = svg.getBoundingClientRect()
+      const vb = wrap.__mermaidCurViewBox || getSvgViewBox(svg)
+      const x = vb[0] + (clientX - rect.left) * (vb[2] / rect.width)
+      const y = vb[1] + (clientY - rect.top) * (vb[3] / rect.height)
+      return { x, y, rect, vb }
+    }
+
+    const state = {
+      pointers: new Map(),
+      startVb: null,
+      startDist: 0,
+      startCenter: null
+    }
+
+    const clampVb = vb => {
+      const init = wrap.__mermaidInitViewBox || vb
+      const minW = init[2] * 0.1
+      const maxW = init[2] * 10
+      const minH = init[3] * 0.1
+      const maxH = init[3] * 10
+      vb[2] = clamp(vb[2], minW, maxW)
+      vb[3] = clamp(vb[3], minH, maxH)
+      return vb
+    }
+
+    const setCurVb = vb => {
+      vb = clampVb(vb)
+      wrap.__mermaidCurViewBox = vb
+      setSvgViewBox(svg, vb)
+    }
+
+    const onPointerDown = e => {
+      // Allow only primary button for mouse
+      if (e.pointerType === 'mouse' && e.button !== 0) return
+      svg.setPointerCapture(e.pointerId)
+      state.pointers.set(e.pointerId, { x: e.clientX, y: e.clientY })
+
+      if (state.pointers.size === 1) {
+        state.startVb = (wrap.__mermaidCurViewBox || getSvgViewBox(svg)).slice()
+      } else if (state.pointers.size === 2) {
+        const pts = [...state.pointers.values()]
+        const dx = pts[0].x - pts[1].x
+        const dy = pts[0].y - pts[1].y
+        state.startDist = Math.hypot(dx, dy)
+        state.startVb = (wrap.__mermaidCurViewBox || getSvgViewBox(svg)).slice()
+        state.startCenter = { x: (pts[0].x + pts[1].x) / 2, y: (pts[0].y + pts[1].y) / 2 }
+      }
+    }
+
+    const onPointerMove = e => {
+      if (!state.pointers.has(e.pointerId)) return
+      state.pointers.set(e.pointerId, { x: e.clientX, y: e.clientY })
+
+      // Pan with 1 pointer
+      if (state.pointers.size === 1 && state.startVb) {
+        const p = [...state.pointers.values()][0]
+        const prev = { x: e.clientX - e.movementX, y: e.clientY - e.movementY }
+        // movementX/Y unreliable on touch, compute from stored last position
+        const last = wrap.__mermaidLastSinglePointer || p
+        const dxClient = p.x - last.x
+        const dyClient = p.y - last.y
+        wrap.__mermaidLastSinglePointer = p
+
+        const { rect } = clientToViewBox(p.x, p.y)
+        const vb = (wrap.__mermaidCurViewBox || getSvgViewBox(svg)).slice()
+        const dx = dxClient * (vb[2] / rect.width)
+        const dy = dyClient * (vb[3] / rect.height)
+        setCurVb([vb[0] - dx, vb[1] - dy, vb[2], vb[3]])
+        return
+      }
+
+      // Pinch zoom with 2 pointers
+      if (state.pointers.size === 2 && state.startVb && state.startDist > 0) {
+        const pts = [...state.pointers.values()]
+        const dx = pts[0].x - pts[1].x
+        const dy = pts[0].y - pts[1].y
+        const dist = Math.hypot(dx, dy)
+        if (!dist) return
+        const factor = state.startDist / dist // dist bigger => zoom in (viewBox smaller)
+
+        const cx = (pts[0].x + pts[1].x) / 2
+        const cy = (pts[0].y + pts[1].y) / 2
+        const centerClient = { x: cx, y: cy }
+
+        const pxy = clientToViewBox(centerClient.x, centerClient.y)
+        const cpx = pxy.x
+        const cpy = pxy.y
+
+        const vb = zoomAtPoint(state.startVb, factor, cpx, cpy)
+        setCurVb(vb)
+      }
+    }
+
+    const onPointerUpOrCancel = e => {
+      state.pointers.delete(e.pointerId)
+      if (state.pointers.size === 0) {
+        state.startVb = null
+        state.startDist = 0
+        state.startCenter = null
+        wrap.__mermaidLastSinglePointer = null
+      } else if (state.pointers.size === 1) {
+        // reset single pointer baseline to avoid jump
+        wrap.__mermaidLastSinglePointer = [...state.pointers.values()][0]
+      }
+    }
+
+    // Wheel zoom (mouse/trackpad)
+    const onWheel = e => {
+      // ctrlKey on mac trackpad pinch; we treat both as zoom
+      e.preventDefault()
+      const delta = e.deltaY
+      const zoomFactor = delta > 0 ? 1.1 : 0.9
+      const { x, y } = clientToViewBox(e.clientX, e.clientY)
+      const vb = (wrap.__mermaidCurViewBox || getSvgViewBox(svg)).slice()
+      setCurVb(zoomAtPoint(vb, zoomFactor, x, y))
+    }
+
+    const onDblClick = () => {
+      const init = wrap.__mermaidInitViewBox
+      if (!init) return
+      wrap.__mermaidCurViewBox = init.slice()
+      setSvgViewBox(svg, init)
+    }
+
+    svg.addEventListener('pointerdown', onPointerDown)
+    svg.addEventListener('pointermove', onPointerMove)
+    svg.addEventListener('pointerup', onPointerUpOrCancel)
+    svg.addEventListener('pointercancel', onPointerUpOrCancel)
+    svg.addEventListener('wheel', onWheel, { passive: false })
+    svg.addEventListener('dblclick', onDblClick)
+  }
+
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+
+      // Clear old render (themeChange/pjax will rerun)
+      const oldSvg = item.querySelector('svg')
+      if (oldSvg) oldSvg.remove()
+      item.__mermaidGestureBound = false
+
+      const config = mermaidSrc.dataset.config ? JSON.parse(mermaidSrc.dataset.config) : {}
+      if (!config.theme) {
+        config.theme = theme
+      }
+      const mermaidThemeConfig = `%%{init: ${JSON.stringify(config)}}%%\n`
+      const mermaidID = `mermaid-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+      const renderMermaid = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+        if (true) initMermaidGestures(item)
+        item.__mermaidOriginalSvg = svg
+        if (true) attachMermaidViewerButton(item)
+      }
+
+
+      // mermaid v9 and v10 compatibility
+      typeof renderFn === 'string' ? renderMermaid(renderFn) : renderFn.then(({ svg }) => renderMermaid(svg))
+    })
+  }
+
+  const codeToMermaid = () => {
+    const codeMermaidEle = document.querySelectorAll('pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    if (false) codeToMermaid()
+    const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid@11.12.2/dist/mermaid.min.js').then(runMermaidFn)
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索文章..." type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.5.4"></script></div></div></body></html>
