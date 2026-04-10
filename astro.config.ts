@@ -61,13 +61,13 @@ export default defineConfig({
     preserveScriptOrder: true,
     fonts: [
       {
-        name: "Google Sans Code",
+        name: "Bunny Fonts",
         cssVariable: "--font-google-sans-code",
-        provider: fontProviders.google(),
+        provider: fontProviders.bunny(),
         fallbacks: ["monospace"],
-        weights: [300, 400, 500, 600, 700],
-        styles: ["normal", "italic"],
-      },
-    ],
+        weights: [400],
+        styles: ["normal"],
+      }
+    ]
   },
 });

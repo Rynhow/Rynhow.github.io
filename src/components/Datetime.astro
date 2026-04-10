@@ -2,11 +2,15 @@
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
+// 新增：导入中文语言包
+import "dayjs/locale/zh-cn";
 import IconCalendar from "@/assets/icons/IconCalendar.svg";
 import { SITE } from "@/config";
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
+// 新增：设置 dayjs 默认为中文
+dayjs.locale("zh-cn");
 
 type Props = {
   class?: string;
@@ -31,7 +35,8 @@ const datetime = dayjs(isModified ? modDatetime : pubDatetime).tz(
   postTimezone || SITE.timezone
 );
 
-const date = datetime.format("D MMM, YYYY"); // e.g., '22 Mar, 2025'
+// 修改为中文日期格式：2025年04月10日
+const date = datetime.format("YYYY年MM月DD日");
 ---
 
 <div class:list={["flex items-center gap-x-2 opacity-80", className]}>
@@ -44,7 +49,7 @@ const date = datetime.format("D MMM, YYYY"); // e.g., '22 Mar, 2025'
   {
     isModified && (
       <span class:list={["text-sm", { "sm:text-base": size === "lg" }]}>
-        Updated:
+        更新于：
       </span>
     )
   }
