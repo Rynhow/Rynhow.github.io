@@ -39,11 +39,10 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 		// 桌面背景图片（支持单张或多张随机）
 		// desktop: "assets/images/DesktopWallpaper/d1.avif",
 		desktop: [
-			"assets/images/DesktopWallpaper/d1.avif",
-			"assets/images/DesktopWallpaper/d2.avif",
-			"assets/images/DesktopWallpaper/d3.avif",
-			"assets/images/DesktopWallpaper/d4.avif",
-			"assets/images/DesktopWallpaper/d5.avif",
+			"assets/images/DesktopWallpaper/1.webp",
+			"assets/images/DesktopWallpaper/2.webp",
+			"assets/images/DesktopWallpaper/3.webp",
+			"assets/images/DesktopWallpaper/4.webp",
 			"assets/images/DesktopWallpaper/d6.avif",
 		],
 		// 移动背景图片（支持单张或多张随机）
@@ -54,7 +53,6 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 			"assets/images/MobileWallpaper/m3.avif",
 			"assets/images/MobileWallpaper/m4.avif",
 			"assets/images/MobileWallpaper/m5.avif",
-			"assets/images/MobileWallpaper/m6.avif",
 		],
 	},
 	// Banner模式特有配置
@@ -102,21 +100,21 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 		credit: {
 			enable: {
 				// 桌面端显示横幅图片来源文本
-				desktop: true,
+				desktop: false,
 				// 移动端显示横幅图片来源文本
-				mobile: true,
+				mobile: false,
 			},
 			text: {
 				// 桌面端要显示的来源文本
-				desktop: "Pixiv - 晚晚喵",
+				desktop: "",
 				// 移动端要显示的来源文本
-				mobile: "Pixiv - KiraraShss",
+				mobile: "",
 			},
 			url: {
 				// 桌面端原始艺术品或艺术家页面的 URL 链接
-				desktop: "https://www.pixiv.net/users/108801776",
+				desktop: "",
 				// 移动端原始艺术品或艺术家页面的 URL 链接
-				mobile: "https://www.pixiv.net/users/42715864",
+				mobile: "",
 			},
 		},
 		// 横幅导航栏配置
@@ -143,10 +141,10 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 				// 桌面端是否启用水波纹动画效果
 				desktop: true,
 				// 移动端是否启用水波纹动画效果
-				mobile: true,
+				mobile: false,
 			},
 			// 是否允许用户通过控制面板切换水波纹动画
-			switchable: true,
+			switchable: false,
 		},
 	},
 	// 全屏透明覆盖模式特有配置

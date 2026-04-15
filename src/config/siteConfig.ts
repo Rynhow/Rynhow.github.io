@@ -13,7 +13,7 @@ export const siteConfig: SiteConfig = {
 	subtitle: "",
 
 	// 站点 URL
-	site_url: "https://firefly.cuteleaf.cn",
+	site_url: "https://rynhow.netlity.app",
 
 	// 站点描述
 	description:
@@ -33,9 +33,9 @@ export const siteConfig: SiteConfig = {
 	// 主题色
 	themeColor: {
 		// 主题色的默认色相，范围从 0 到 360。例如：红色：0，青色：200，蓝绿色：250，粉色：345
-		hue: 165,
+		hue: 300,
 		// 是否对访问者隐藏主题色选择器
-		fixed: false,
+		fixed: true,
 		// 默认模式："light" 亮色，"dark" 暗色，"system" 跟随系统
 		defaultMode: "system",
 	},
@@ -43,7 +43,7 @@ export const siteConfig: SiteConfig = {
 	// 页面整体宽度（单位：rem）
 	// 数值越大可以让页面内容区域更宽
 	// 在使用单侧栏边栏时，建议调低一些宽度以获得更好的视觉效果。
-	pageWidth: 100,
+	pageWidth: 90,
 
 	// 网站Card样式配置
 	card: {
@@ -131,9 +131,9 @@ export const siteConfig: SiteConfig = {
 		// 友链页面开关
 		friends: true,
 		// 赞助页面开关
-		sponsor: true,
+		sponsor: false,
 		// 留言板页面开关，需要配置评论系统
-		guestbook: true,
+		guestbook: false,
 		// 番组计划页面开关，含追番、游戏、书籍和音乐，dev调试时只获取一页数据，build才会获取全部数据
 		bangumi: true,
 		// 相册页面开关
@@ -146,7 +146,7 @@ export const siteConfig: SiteConfig = {
 	// 文章列表布局配置
 	postListLayout: {
 		// 默认布局模式："list" 列表模式（单列布局），"grid" 网格模式（多列布局）
-		defaultMode: "grid",
+		defaultMode: "list",
 		// 移动端默认布局模式，不设置则跟随 defaultMode
 		mobileDefaultMode: "list",
 		// 是否在文章列表中显示标签
