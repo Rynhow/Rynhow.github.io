@@ -74,9 +74,9 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 			titleSize: "3.8rem",
 			// 主页横幅副标题
 			subtitle: [
-				"In Reddened Chrysalis, I Once Rest",
-				"From Shattered Sky, I Free Fall",
-				"Amidst Silenced Stars, I Deep Sleep",
+				"Exploring the digital world",
+				"- 技术沉淀，持续学习",
+				"- 网安 | 编程 | 笔记",
 				"Upon Lighted Fyrefly, I Soon Gaze",
 				"From Undreamt Night, I Thence Shine",
 				"In Finalized Morrow, I Full Bloom",

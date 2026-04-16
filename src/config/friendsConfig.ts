@@ -25,7 +25,7 @@ export const friendsConfig: FriendLink[] = [
 	{
 		title: "廖老师的教程",
 		imgurl:
-			"",
+			"http://thirdqq.qlogo.cn/ek_qqapp/AQVJKMtqeFCGNEZqicOj7qb7mnpcJiaZNlEOf0iasx2DicuEycbIG9cQktWUBxWR1dFWfLMI2Ilt/100",
 		desc: "资深软件开发工程师,提供Python、Java等零基础教程",
 		siteurl: "https://liaoxuefeng.com/index.html",
 		tags: ["编程"],
@@ -34,9 +34,9 @@ export const friendsConfig: FriendLink[] = [
 	},
 	{
 		title: "菜鸟教程",
-		imgurl: "",
+		imgurl: "https://www.runoob.com/wp-content/uploads/2013/06/runoob.jpeg",
 		desc: "全栈技术零基础教程，内容详实干货满满",
-		siteurl: "https://docs-firefly.cuteleaf.cn",
+		siteurl: "https://www.runoob.com/",
 		tags: ["编程"],
 		weight: 9,
 		enabled: true,
@@ -52,7 +52,7 @@ export const friendsConfig: FriendLink[] = [
 	},
 	{
 		title: "在线图像工具箱",
-		imgurl: "",
+		imgurl: "https://phototool.cn/assets/images/favicon.png",
 		desc: "提供格式转换，无损压缩等",
 		siteurl: "https://phototool.cn/",
 		tags: ["工具"],
