@@ -77,9 +77,8 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 				"Exploring the digital world",
 				"- 技术沉淀，持续学习",
 				"- 网安 | 编程 | 笔记",
-				"Upon Lighted Fyrefly, I Soon Gaze",
-				"From Undreamt Night, I Thence Shine",
-				"In Finalized Morrow, I Full Bloom",
+				"死亡不是真正的逝去，遗忘才是。——《寻梦环游记》",
+				"已经走到尽头的东西，重生也不过是再一次的消亡。就像所有的开始，其实都只是一个写好了的结局。——《千与千寻》"
 			],
 			// 主页横幅副标题字体大小
 			subtitleSize: "1.5rem",

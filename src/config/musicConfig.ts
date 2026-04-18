@@ -63,6 +63,13 @@ export const musicPlayerConfig: MusicPlayerConfig = {
 				cover: "/assets/music/cover/Take Me Hand.webp",
 				lrc: "",
 			},
+			{
+				name: "Good Time",
+				artist: "Owl City&Carly Rae Jepsen",
+				url: "/assets/music/Good Time - Owl City&Carly Rae Jepsen.mp3",
+				cover: "/assets/music/cover/Good Time.webp",
+				lrc: "",
+			},
 		],
 		
 	},
