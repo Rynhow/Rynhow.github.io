@@ -1,9 +1,10 @@
 ---
 title: git常用命令集
-published: 2026-04-16
+published: 2026-09-11
 description: "涵盖日常开发使用的 Git 常用命令，包括提交、推送、分支、撤销等操作。"
 tags: [git]
 category: git
+image: ./images/git.webp
 ---
 
 # Git 常用命令完整版
@@ -36,7 +37,7 @@ category: git
 
 bash
 
-```
+```bash
 # 设置用户名和邮箱
 git config --global user.name "Your Name"
 git config --global user.email "you@example.com"
@@ -63,7 +64,7 @@ git config --global alias.lg "log --oneline --graph --decorate --all"
 
 bash
 
-```
+```bash
 # 初始化本地仓库
 git init
 
@@ -83,7 +84,7 @@ git clone --depth 1 <url>
 
 bash
 
-```
+```bash
 # 查看状态
 git status
 git status -s
@@ -107,7 +108,7 @@ git commit --amend --no-edit   # 修改上一次提交但不改提交信息
 
 bash
 
-```
+```bash
 # 查看差异
 git diff
 git diff --staged
@@ -140,7 +141,7 @@ git reflog
 
 bash
 
-```
+```bash
 # 查看分支
 git branch
 git branch -a
@@ -185,7 +186,7 @@ git cherry-pick <commit>
 
 bash
 
-```
+```bash
 # 查看远程
 git remote -v
 git remote show origin
@@ -229,7 +230,7 @@ git push --tags
 
 bash
 
-```
+```bash
 # 丢弃工作区修改
 git restore <file>
 git checkout -- <file>          # 旧写法
@@ -256,7 +257,7 @@ git revert <commit>
 
 bash
 
-```
+```bash
 # 查看标签
 git tag
 
@@ -283,7 +284,7 @@ git push origin --delete tag v1.0.0
 
 bash
 
-```
+```bash
 # 保存当前修改
 git stash
 git stash push -m "message"
@@ -308,7 +309,7 @@ git stash clear
 
 bash
 
-```
+```bash
 # 预览将要删除的未跟踪文件
 git clean -n
 
@@ -324,13 +325,13 @@ git clean -fdx
 
 
 
-> `git clean -fdx` 和 `git reset --hard` 会丢失数据，慎用。
+> `git clean -fdx` 和 `git reset --hard` 会丢失数据，慎用哈
 
 ## 11. 子模块
 
 bash
 
-```
+```bash
 # 添加子模块
 git submodule add <url> <path>
 
@@ -350,7 +351,7 @@ git submodule update --remote
 
 bash
 
-```
+```bash
 # 创建 .gitignore
 echo "node_modules/" >> .gitignore
 echo "dist/" >> .gitignore
@@ -371,7 +372,7 @@ git commit -m "update .gitignore"
 
 bash
 
-```
+```bash
 git init
 git add .
 git commit -m "init"
@@ -386,7 +387,7 @@ git push -u origin main
 
 bash
 
-```
+```bash
 git fetch --all --prune
 git switch main
 git pull --rebase
@@ -398,7 +399,7 @@ git pull --rebase
 
 bash
 
-```
+```bash
 git fetch origin
 git merge origin/main
 
@@ -412,7 +413,7 @@ git rebase origin/main
 
 bash
 
-```
+```bash
 git stash push -m "wip"
 git switch main
 git pull
@@ -426,7 +427,7 @@ git stash pop
 
 bash
 
-```
+```bash
 git push --force-with-lease
 ```
 
@@ -438,7 +439,7 @@ git push --force-with-lease
 
 bash
 
-```
+```bash
 git status                     # 查看冲突文件
 # 手动编辑冲突文件，保留需要的代码
 git add <file>
@@ -453,7 +454,7 @@ git commit
 
 bash
 
-```
+```bash
 git status
 # 手动编辑冲突文件
 git add <file>
@@ -470,7 +471,7 @@ git rebase --abort
 
 bash
 
-```
+```bash
 git status
 # 手动编辑冲突文件
 git add <file>
@@ -485,7 +486,7 @@ git cherry-pick --abort
 
 bash
 
-```
+```bash
 git merge --abort
 ```
 
@@ -497,7 +498,7 @@ git merge --abort
 
 bash
 
-```
+```bash
 git rebase -i HEAD~n
 # 常用操作：
 # pick   保留提交
@@ -514,7 +515,7 @@ git rebase -i HEAD~n
 
 bash
 
-```
+```bash
 git commit --fixup <commit>
 git rebase -i --autosquash <commit>~1
 ```
@@ -525,7 +526,7 @@ git rebase -i --autosquash <commit>~1
 
 bash
 
-```
+```bash
 git bisect start
 git bisect bad                  # 当前版本有问题
 git bisect good <commit>        # 已知正常版本
@@ -542,7 +543,7 @@ git bisect reset
 
 bash
 
-```
+```bash
 git worktree add ../hotfix main
 git worktree list
 git worktree remove ../hotfix
@@ -554,7 +555,7 @@ git worktree remove ../hotfix
 
 bash
 
-```
+```bash
 # 生成补丁
 git format-patch -1 <commit>
 git format-patch <commit1>..<commit2>
@@ -570,7 +571,7 @@ git apply < patch-file
 
 bash
 
-```
+```bash
 git lfs install
 git lfs track "*.psd"
 git add .gitattributes
@@ -582,7 +583,7 @@ git add .gitattributes
 
 bash
 
-```
+```bash
 git gc
 git fsck
 git count-objects -vH
@@ -594,7 +595,7 @@ git count-objects -vH
 
 bash
 
-```
+```bash
 # 本地钩子目录
 .git/hooks
 
@@ -610,7 +611,7 @@ commitlint
 
 bash
 
-```
+```bash
 # 查看所有操作记录
 git reflog
 
@@ -626,13 +627,13 @@ git push --force-with-lease
 
 
 
-> 误操作后不要慌，先 `git reflog`，大多数提交都能找回。
+> 误操作别着急，先 `git reflog`，大多数提交都能找回
 
 ## 17. 帮助命令
 
 bash
 
-```
+```bash
 git help <command>
 git <command> -h
 ```
@@ -648,4 +649,4 @@ git <command> -h
 - `git push --force`
 - `git rebase` 已推送到远端的公共分支
 
-> 建议：提交前先 `git status`，推送前先 `git pull --rebase`，强推优先用 `--force-with-lease`。
+> 建议：提交前先 `git status`，推送前先 `git pull --rebase`，强推优先用 `--force-with-lease`
