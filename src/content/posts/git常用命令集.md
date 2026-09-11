@@ -1,9 +1,9 @@
 ---
 title: git常用命令集
 published: 2026-04-16
-description: 
-tags: [教程]
-category: 教程
+description: "涵盖日常开发使用的 Git 常用命令，包括提交、推送、分支、撤销等操作。"
+tags: [git]
+category: git
 ---
 
 # Git 常用命令完整版
