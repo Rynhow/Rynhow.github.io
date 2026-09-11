@@ -3,7 +3,7 @@ title: VMware的一些使用问题
 published: 2026-09-11
 category: VMware
 tags: [VMware]
-image:./images/VMware.webp
+image: ./images/VMware.webp
 ---
 
 对于**Pro版本**（包括Workstation Pro和Fusion Pro），免费是一个逐步推进的过程：
