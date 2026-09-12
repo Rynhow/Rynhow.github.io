@@ -70,6 +70,13 @@ export const musicPlayerConfig: MusicPlayerConfig = {
 				cover: "/assets/music/cover/Good Time.webp",
 				lrc: "",
 			},
+			{
+				name: "Memories",
+				artist: "TRA$H",
+				url: "/assets/music/Memories - TRA$H.mp3",
+				cover: "/assets/music/cover/Memories.webp",
+				lrc: "",
+			},
 		],
 		
 	},
